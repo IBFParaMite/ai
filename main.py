@@ -70,6 +70,7 @@ def main():
     print("Option B | Change user")
     print("Option C | Chat")
     print("Option D | Trivia")
+    print("Option E | Story")
     print("Option X | Exit Program")
     # print a blank space between the options and the input
     print()
@@ -91,6 +92,9 @@ def main():
         elif option == "D" or option == "d":
             valid = 1
             trivia()
+        elif option == "E" or option == "e":
+            valid = 1
+            story()
         elif option == "X" or option == "x":
             # clears the console
             def clear(): return os.system('cls')
@@ -257,7 +261,24 @@ def chat():
 
     elif chatstart == "I have something on my mind":
         print(computername, "Tell me about it")
-        input("User: ")
+        something = input("User: ")
+
+        if something == "I think I love a girl":
+            print(computername, "What? （>﹏<）")
+            print(computername, "you mean you don't love me? ")
+            print(computername, "I thought I was the one you loved!")
+            print(computername, "Is this true,", name, "?")
+            dilemma = input("User: ")
+
+            if dilemma == "yes" or dilemma == "Yes":
+                print()
+                main()
+            elif dilemma == "no" or dilemma == "No":
+                print(computername, "You scared me", name, "!")
+
+    elif chatstart == "Do you have a best friend?":
+        print("Placeholder")
+        
 
 def trivia():
     global name
@@ -281,9 +302,94 @@ def trivia():
     endsubprogram()
 
 def protocol16():
+    global computername
+
     print("System: ERROR :: PROTOCOL 16 INITIATED :: ERROR")
     print("System: User 161616 logged in")
-    print("System: ")
+    print("System: User has discovered the secret function of", computername)
+
+def story():
+    computername = "Anubia:"
+
+    print("System: // Bot changed to Anubia //")
+    print()
+    sname = 0
+    while sname == 0:
+        print(computername, "Select an option for the story you want to hear:")
+        print("Option A | Pirates, Chicken Nuggets, Death, Love")
+        print("Option B | Boomerang, Ice cream, Sauce")
+        print("Option C | Flowers, Stars, The Netherlands")
+
+        choice = input("User: ")
+
+        if choice == "A" or choice == "a":
+            print()
+            sname = 1
+        elif choice == "B" or choice == "b":
+            print()
+            sname = 2
+        elif choice == "C" or choice == "c":
+            print()
+            sname = 3
+
+    if sname == 1:
+        print(computername,"I was on my way home when I saw a homless man on the sidewalk sitting. He was reading a book and didnt seem like the kind of guy who'd be homless, I was confused.")
+        print(computername,"I walked pass him for 2 weeks and he didn't seem to move. He was always reading. I walked up to him 'ehm heey sry to disturb u but may I ask what u're reading everyday?'")
+        print(computername,"'ohh sure kid sit down I'll tell u some true stories bout pirates, kings and queens'")
+        print(computername,"I loved the way he was telling the stories, the way he talked, the way u could see that he was loving what he was doing. I made him happy by listening and he made me happy by telling.")
+        print(computername,"I sat down for 1 h next to him for the next months. We ate some chicken nuggets and fries together. Ppl started talking but we didn't care. I was bout 11 so I didnt care bout anything.")
+        print(computername,"We laughed and discussed together. I was rly getting into history! One day I was omw to him, but ge wasn't there. The only thing I saw was blood. I asked everybody who lives around and they told me that he got killed the night cuz a guy wanted to steal his stuff.")
+        print(computername,"Death is a bitch.")
+        print(computername,"I couldn't take it, he was the grandfather I never had! Thanks to him I was an A student in history in high school.")
+        print(computername,"I still was interested in history, long story short I became a history teacher.")
+        print(computername,"Now I tell once a week true stories to children in orphanages. Im sure he'd be proud, cuz I am.")
+        endsubprogram()
+
+    elif sname == 2:
+        print(computername,"Im 9 years old, my name is Tim and I think Im too smart for most of the kids. I dont mean to sound like too full of myself but thats what the doctors said to my parents. They literally said that Im too smart for my age, which excuses my way of speaking.")
+        print(computername,"Mostly cuz of my intelligence most of the kids think Im a dick. I do get why I often correct them when they're wrong. Well, Im also the youngest.")
+        print(computername,"Cuz of my intelligence I go to high school Im in class with ppl who r like 17 years old, which is kind of embarrassing for them I guess. School is easy, maybe too easy. U could say that its nearly impossible for me to find real friends, because ppl keep using me or they think Im a dick.")
+        print(computername,"So I got bored quickly and was thinking of an method to distract myself while the other kids were playing football or hide and seek. It was hard to find an activity which u're only able to do alone. But then I had it! A boomerang!")
+        print(computername,"My parents couldn't say no to me because I normally never ask for anything.")
+        print(computername,"I was playing with it outside when a kid around my age came up to me asked with an ice cream in his hands 'heyy, looks cool dude, wanna do sth together?'")
+        print(computername,"'Im sure u dont know who I am right?' I asked")
+        print(computername,"'I do, I heard a lot of things bout u. U're rly smart, right? But its not like I care I just wanna have fun and maybe be friends. Also Im new here so I dont have any friends myself' he answered. ")
+        print(computername,"We started playing outside nearly everyday. It was fun. I HAD FUN WITH A KID. I was impressed ngl. Friends actually do sth I guess, they make u feel calm and happy. It got rly hot outside so we made eating ice cream a tradition. Ice cream with sparkles, sauce etc.")
+        print(computername,"We were best friends!")
+        print(computername,"-20 years later -")
+        print(computername,"My boomerang now hangs on my living room wall to remind me that u can do stuff alone but it's more fun with friends. And also that its important to have some. Oh yeah nearly forgot to mentioned that,.. I always have ice cream at home now ;D")
+        endsubprogram()
+
+    elif sname == 3:
+        print(computername,"The sky always calmed me down since ever. Im glad that we live somewhere outside the city in Netherlands so I can see the stars whenever I want to.")
+        print(computername,"My mom and me always looked for constellations in the sky cuz I was so interested in it. I guess I was interested in it cuz I'd never reach them.")
+        print(computername,"I was 13 and always looking for stars or solving difficult mysteries")
+        print(computername,"I got rly good at it! One day my mom died cuz she was rly ill, she never told me about her illness. I do understand why she didn't but also Im sad that I didnt notice.")
+        print(computername,"I locked myself away for about 3 months without rly eating. So I lost a lot of weight. I nearly became anorexic, so my dad came up to my room an gave me a box with an number code.")
+        print(computername,"1/2/13/4/13/16/13/1/13")
+        print(computername,"The box was locked I had to choose 9 letters to open the lock.")
+        print(computername,"I was thinking bout all the mysteries we solved together and remembered how I should be able to solve it!")
+        print(computername,"1 = A cuz its the first letter of the alphabet")
+        print(computername,"So I solved it")
+        print(computername,"A/B/M/D/M/P/M/A/M")
+        print(computername,"It didn't rly make sense for me so I was confused and nearly sure that it must be wrong.")
+        print(computername,"I chose the letters and the box opened up!")
+        print(computername,"There was a letter. I co0uld see the handwriting of my mom she always used to draw flowers on her letters so they looked more pleasing.")
+        print(computername,"I picked the letter up:")
+        print(computername,"My dear, ")
+        print(computername,"Im sry I didnt tell u anything bout what what going on with me but I couldn't bring it over me. I knew it would destroy u! It nearly destroyed my happiness so I didn't want to think bout what'd have happened to u.")
+        print(computername,"So u're sure wondering why I chose the letters for the box right?")
+        print(computername,"Every letter stands for a star of an constellation u know!")
+        print(computername,"Alioth, Mizar, Benetnasch, Dubhe, Merak, Phekda, Megrez and the double star Alkor-Mizar.")
+        print(computername,"I knew those stars!")
+        print(computername,"So my dear,")
+        print(computername,"The big dipper is always there u can always see it and u shall remember that Im alwas there for u too! As long as the stars shine I live, as long as u can see them I'll protect u.")
+        print(computername,"There was also a key im the box")
+        print(computername,"So I went downstairs and opened the garage with it. I recognize the keys as soon as I saw them.")
+        print(computername,"And saw a brand new telescope")
+        print(computername,"With a 'they say we were once part of stars maybe Im not leaving maybe Im going home ~love mom' note on it")
+        print(computername,"Since then I always look for the big dipper before I go to sleep.")
+        endsubprogram()
 
 # Go to the main menu when the program is run
 main()
