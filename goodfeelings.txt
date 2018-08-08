@@ -4,4 +4,8 @@ spectacular
 cheerful 
 excellent 
 decent
-test
+happy
+ecstatic
+positive
+joyful
+content
