@@ -75,6 +75,8 @@ talk = 0
 bestfriends = 0
 # sets the variable for if the user has run the greet() function before to 0
 greetreturn = 0
+# sets the variable for if the user tells the AI they love someone else
+reaction = 0
 
 # // defining the main function of the bot //
 def main():
@@ -84,6 +86,7 @@ def main():
     global name
     global feeling
     global lastemotion
+    global reaction
 
     # while loop to get the name of the user at the start of the program if the name is set to User (default)
     while name == "User":
@@ -109,8 +112,16 @@ def main():
             elif name == "161616":
                 protocol16()
 
-            print(computername, "Welcome back", name, ", my name is", computernameprint, "!")
-            print()
+            # changes the welcome message if the love.txt file has a string in it and the user's name is Ancient
+            if reaction == "Dilemma yes l1" and name == "Ancient":
+                print(computername, "Hello,",name,".")
+                print()
+                breakup = open("love.txt", "w")
+                breakup.truncate(0)
+                breakup.close()
+            else:
+                print(computername, "Welcome back", name, ", my name is", computernameprint, "!")
+                print()
         # if the name given is not in the vipusers array, display a generic message
         else:
             print(computername, "Hello", name, "!")
@@ -373,7 +384,7 @@ def chat():
         # If the User's name is Ancient, this chain of events will occur
         if name == "Ancient":
             print(computername, "What? (>__<)")
-            print(computername, "you mean you don't love me? ")
+            print(computername, "You mean you don't love me? ")
             print(computername, "I thought I was the one you loved!")
             print(computername, "Is this true,", name, "?")
             dilemma = str(input("User: "))
@@ -381,7 +392,7 @@ def chat():
             if dilemma == "yes" or dilemma == "Yes":
                 print(computername, "Goodbye,",name)
                 time.sleep(2)
-                breakup = open("breakup.txt", "w")
+                breakup = open("love.txt", "w")
                 breakup.write("Dilemma yes")
                 breakup.close()
                 exit()
@@ -463,8 +474,11 @@ def chat():
 # the function is executed when the program is run
 # needs expanding
 def robotreaction():
+    global breakup
+    global reaction
+
     # opens the text file and reads the contents
-    breakup = open("breakup.txt", "r")
+    breakup = open("love.txt", "r")
     # saves the contents of the file into the variable reaction
     reaction = breakup.read()
     breakup.close()
@@ -479,7 +493,7 @@ def robotreaction():
         print("Roberto: What are you doing back here?")
         print("Roberto: I thought you loved someone else.")
 
-        breakup = open("breakup.txt", "w")
+        breakup = open("love.txt", "w")
         # a new string is written to the file indicating that the special dialogue will happen once more
         breakup.write("Dilemma yes l1")
         breakup.close()
@@ -490,9 +504,8 @@ def robotreaction():
     # needs completing
     elif reaction == "Dilemma yes l1":
         print("Roberto: Why do you keep coming back, Ancient?")
-
-        breakup = open("breakup.txt", "w")
-        breakup.truncate(0)
+        print()
+        main()
 
 
 # function that brings the user back to the main menu
@@ -574,113 +587,31 @@ def story():
     # display story one
     # there is a 4 second sleep period in between each line for increased realism
     if sname == 1:
-        print(computername,"I was on my way home when I saw a homeless man on the sidewalk sitting. He was reading a book and didnt seem like the kind of guy who'd be homless, I was confused.")
-        time.sleep(4)
-        print(computername,"I walked pass him for 2 weeks and he didn't seem to move. He was always reading. I walked up to him 'ehm heey sry to disturb u but may I ask what u're reading everyday?'")
-        time.sleep(4)
-        print(computername,"'ohh sure kid sit down I'll tell u some true stories bout pirates, kings and queens'")
-        time.sleep(4)
-        print(computername,"I loved the way he was telling the stories, the way he talked, the way u could see that he was loving what he was doing. I made him happy by listening and he made me happy by telling.")
-        time.sleep(4)
-        print(computername,"I sat down for 1 h next to him for the next months. We ate some chicken nuggets and fries together. Ppl started talking but we didn't care. I was bout 11 so I didnt care bout anything.")
-        time.sleep(4)
-        print(computername,"We laughed and discussed together. I was rly getting into history! One day I was omw to him, but ge wasn't there. The only thing I saw was blood. I asked everybody who lives around and they told me that he got killed the night cuz a guy wanted to steal his stuff.")
-        time.sleep(4)
-        print(computername,"Death is a bitch.")
-        time.sleep(4)
-        print(computername,"I couldn't take it, he was the grandfather I never had! Thanks to him I was an A student in history in high school.")
-        time.sleep(4)
-        print(computername,"I still was interested in history, long story short I became a history teacher.")
-        time.sleep(4)
-        print(computername,"Now I tell once a week true stories to children in orphanages. Im sure he'd be proud, cuz I am.")
+        s1 = open("Stories/story1.txt")
+        story1 = s1.read()
+        s1.close()
+        print(story1)
+
         endsubprogram("neutral")
 
     # display story two
     # there is a 4 second sleep period in between each line for increased realism
     elif sname == 2:
-        print(computername,"Im 9 years old, my name is Tim and I think Im too smart for most of the kids. I dont mean to sound like too full of myself but thats what the doctors said to my parents. They literally said that Im too smart for my age, which excuses my way of speaking.")
-        time.sleep(4)
-        print(computername,"Mostly cuz of my intelligence most of the kids think Im a dick. I do get why I often correct them when they're wrong. Well, Im also the youngest.")
-        time.sleep(4)
-        print(computername,"Cuz of my intelligence I go to high school Im in class with ppl who r like 17 years old, which is kind of embarrassing for them I guess. School is easy, maybe too easy. U could say that its nearly impossible for me to find real friends, because ppl keep using me or they think Im a dick.")
-        time.sleep(4)
-        print(computername,"So I got bored quickly and was thinking of an method to distract myself while the other kids were playing football or hide and seek. It was hard to find an activity which u're only able to do alone. But then I had it! A boomerang!")
-        time.sleep(4)
-        print(computername,"My parents couldn't say no to me because I normally never ask for anything.")
-        time.sleep(4)
-        print(computername,"I was playing with it outside when a kid around my age came up to me asked with an ice cream in his hands 'heyy, looks cool dude, wanna do sth together?'")
-        time.sleep(4)
-        print(computername,"'Im sure u dont know who I am right?' I asked")
-        time.sleep(4)
-        print(computername,"'I do, I heard a lot of things bout u. U're rly smart, right? But its not like I care I just wanna have fun and maybe be friends. Also Im new here so I dont have any friends myself' he answered. ")
-        time.sleep(4)
-        print(computername,"We started playing outside nearly everyday. It was fun. I HAD FUN WITH A KID. I was impressed ngl. Friends actually do sth I guess, they make u feel calm and happy. It got rly hot outside so we made eating ice cream a tradition. Ice cream with sparkles, sauce etc.")
-        time.sleep(4)
-        print(computername,"We were best friends!")
-        time.sleep(4)
-        print(computername,"-20 years later -")
-        time.sleep(4)
-        print(computername,"My boomerang now hangs on my living room wall to remind me that u can do stuff alone but it's more fun with friends. And also that its important to have some. Oh yeah nearly forgot to mentioned that,.. I always have ice cream at home now ;D")
+        s2 = open("Stories/story2.txt")
+        story2 = s2.read()
+        s2.close()
+        print(story2)
+
         endsubprogram("neutral")
     
     # display story three
     # there is a 4 second sleep period in between each line for increased realism
     elif sname == 3:
-        print(computername,"The sky always calmed me down since ever. Im glad that we live somewhere outside the city in Netherlands so I can see the stars whenever I want to.")
-        time.sleep(4)
-        print(computername,"My mom and me always looked for constellations in the sky cuz I was so interested in it. I guess I was interested in it cuz I'd never reach them.")
-        time.sleep(4)
-        print(computername,"I was 13 and always looking for stars or solving difficult mysteries")
-        time.sleep(4)
-        print(computername,"I got rly good at it! One day my mom died cuz she was rly ill, she never told me about her illness. I do understand why she didn't but also Im sad that I didnt notice.")
-        time.sleep(4)
-        print(computername,"I locked myself away for about 3 months without rly eating. So I lost a lot of weight. I nearly became anorexic, so my dad came up to my room an gave me a box with an number code.")
-        time.sleep(4)
-        print(computername,"1/2/13/4/13/16/13/1/13")
-        time.sleep(4)
-        print(computername,"The box was locked I had to choose 9 letters to open the lock.")
-        time.sleep(4)
-        print(computername,"I was thinking bout all the mysteries we solved together and remembered how I should be able to solve it!")
-        time.sleep(4)
-        print(computername,"1 = A cuz its the first letter of the alphabet")
-        time.sleep(4)
-        print(computername,"So I solved it")
-        time.sleep(4)
-        print(computername,"A/B/M/D/M/P/M/A/M")
-        time.sleep(4)
-        print(computername,"It didn't rly make sense for me so I was confused and nearly sure that it must be wrong.")
-        time.sleep(4)
-        print(computername,"I chose the letters and the box opened up!")
-        time.sleep(4)
-        print(computername,"There was a letter. I co0uld see the handwriting of my mom she always used to draw flowers on her letters so they looked more pleasing.")
-        time.sleep(4)
-        print(computername,"I picked the letter up:")
-        time.sleep(4)
-        print(computername,"My dear, ")
-        time.sleep(4)
-        print(computername,"Im sry I didnt tell u anything bout what what going on with me but I couldn't bring it over me. I knew it would destroy u! It nearly destroyed my happiness so I didn't want to think bout what'd have happened to u.")
-        time.sleep(4)
-        print(computername,"So u're sure wondering why I chose the letters for the box right?")
-        time.sleep(4)
-        print(computername,"Every letter stands for a star of an constellation u know!")
-        time.sleep(4)
-        print(computername,"Alioth, Mizar, Benetnasch, Dubhe, Merak, Phekda, Megrez and the double star Alkor-Mizar.")
-        time.sleep(4)
-        print(computername,"I knew those stars!")
-        time.sleep(4)
-        print(computername,"So my dear,")
-        time.sleep(4)
-        print(computername,"The big dipper is always there u can always see it and u shall remember that Im alwas there for u too! As long as the stars shine I live, as long as u can see them I'll protect u.")
-        time.sleep(4)
-        print(computername,"There was also a key im the box")
-        time.sleep(4)
-        print(computername,"So I went downstairs and opened the garage with it. I recognize the keys as soon as I saw them.")
-        time.sleep(4)
-        print(computername,"And saw a brand new telescope")
-        time.sleep(4)
-        print(computername,"With a 'they say we were once part of stars maybe Im not leaving maybe Im going home ~love mom' note on it")
-        time.sleep(4)
-        print(computername,"Since then I always look for the big dipper before I go to sleep.")
+        s3 = open("Stories/story3.txt")
+        story3 = s3.read()
+        s3.close()
+        print(story3)
+
         endsubprogram("neutral")
 
 # function for the AI to tell the user jokes if best friends has been achieved
