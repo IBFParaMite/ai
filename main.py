@@ -37,21 +37,21 @@ pickuplines = ["If you were a fruit, you'd be a fineapple",
 
 # feelings import
 # opens the goodfeelings.txt file in read mode
-gfi = open("goodfeelings.txt","r+")
+gfi = open("Feelings/goodfeelings.txt","r+")
 # stores the values from the file in a variable
 goodfeelings = gfi.read()
 # closes the file
 gfi.close()
 
 # opens the badfeelings.txt file in read mode
-bfi = open("badfeelings.txt","r+")
+bfi = open("Feelings/badfeelings.txt","r+")
 # stores the values from the file in a variable
 badfeelings = bfi.read()
 # closes the file
 bfi.close()
 
 # opens the neutralfeelings.txt file in read mode
-nfi = open("neutralfeelings.txt","r+")
+nfi = open("Feelings/neutralfeelings.txt","r+")
 # stores the values from the file in a variable
 neutralfeelings = nfi.read()
 # closes the file
@@ -264,7 +264,7 @@ def savefeeling():
     if newfeeling == "good" or newfeeling == "Good":
         print("Ok, I will remember", feeling, " is a good feeling")
         lastemotion = "g"
-        gfi = open("goodfeelings.txt","a")
+        gfi = open("Feelings/goodfeelings.txt","a")
         # writes the feeling to the list with a new line in front of it so the text isn't clustered together
         gfi.write("\n" + feeling)
         gfi.close()
@@ -272,14 +272,14 @@ def savefeeling():
     elif newfeeling == "bad" or newfeeling == "Bad":
         print("Ok, I will remember", feeling, " is a bad feeling")
         lastemotion = "b"
-        bfi = open("badfeelings.txt","a")
+        bfi = open("Feelings/badfeelings.txt","a")
         bfi.write("\n" + feeling)
         bfi.close()
 
     elif newfeeling == "neutral" or newfeeling == "Neutral":
         print("Ok, I will remember", feeling, " is a neutral feeling")
         lastemotion = "n"
-        nfi = open("neutralfeelings.txt","a")
+        nfi = open("Feelings/neutralfeelings.txt","a")
         nfi.write("\n" + feeling)
         nfi.close()
 
