@@ -4,6 +4,10 @@ import os
 import random
 import time
 
+import tkinter as tk
+
+import turtle
+
 # list of arrays
 # array for the names that the bot can take if the user is not part of the VIP list
 names = ["Hank", "Roberto", "Sylvia",
@@ -15,7 +19,7 @@ names = ["Hank", "Roberto", "Sylvia",
          "Jane", "James", "Gerard"]
 
 # list of users that get a special message display when they use the program and have a fixed bot name
-vipusers = ["Cameron", "Ancient", "Aleyna", "Jonas"]
+vipusers = ["Cameron", "Ancient", "Aleyna", "Jonas", "161616"]
 
 # list of facts used in the trivia() function
 facts = ["The heart of a shrimp is located in its head.",
@@ -59,9 +63,9 @@ nfi.close()
 
 # // list of global variables //
 # using the library 'random', picks a random name from the names array and uses it as the computer's name 
-computernameprint = random.choice(names)
+cnp = random.choice(names)
 # adds a : to the end of the name to be displayed when the bot sends a message
-computername = computernameprint + ":"
+cn = cnp + ":"
 
 # sets the default name of the user to User
 name = "User"
@@ -75,18 +79,23 @@ talk = 0
 bestfriends = 0
 # sets the variable for if the user has run the greet() function before to 0
 greetreturn = 0
+
 # sets the variable for if the user tells the AI they love someone else
-reaction = 0
+breakup = open("love.txt", "r")
+reaction = breakup.read()
+breakup.close()
 
 # // defining the main function of the bot //
 def main():
     # sets variables needed as global variables so they can be accessed within the function
-    global computername
-    global computernameprint
+    global cn
+    global cnp
     global name
     global feeling
     global lastemotion
+
     global reaction
+    global breakup
 
     # while loop to get the name of the user at the start of the program if the name is set to User (default)
     while name == "User":
@@ -97,34 +106,37 @@ def main():
 
         # searches if the name given is in the vipusers array and displays a certain message if true
         if name in vipusers:
-            print()
-            print("System: // User", name, "is in the VIP List //")
+            
             if name == "Ancient":
-                computernameprint = "Roberto"
-                computername = computernameprint + ":"
+                cnp = "Roberto"
+                cn = cnp + ":"
             elif name == "Cameron":
-                computernameprint = "Marvin"
-                computername = computernameprint + ":"
+                cnp = "Marvin"
+                cn = cnp + ":"
             elif name == "Jonas":
-                computernameprint = "Terrence"
-                computername = computernameprint + ":"
+                cnp = "Terrence"
+                cn = cnp + ":"
             # unfinished easter egg
             elif name == "161616":
                 protocol16()
-
+                sys.exit()
+            
             # changes the welcome message if the love.txt file has a string in it and the user's name is Ancient
-            if reaction == "Dilemma yes l1" and name == "Ancient":
-                print(computername, "Hello,",name,".")
+            if reaction == "Broken hearted l1" and name == "Ancient":
+                print(cn, "Hello,",name,".")
                 print()
-                breakup = open("love.txt", "w")
-                breakup.truncate(0)
-                breakup.close()
+            elif reaction == "Coffee":
+                print(cn, "Hey",name ,"! I cant wait for our date!")
+                print()
             else:
-                print(computername, "Welcome back", name, ", my name is", computernameprint, "!")
+                print()
+                print("System: // User", name, "is in the VIP List //")
+                print()
+                print(cn, "Welcome back", name, ", my name is", cnp, "!")
                 print()
         # if the name given is not in the vipusers array, display a generic message
         else:
-            print(computername, "Hello", name, "!")
+            print(cn, "Hello", name, "!")
             print()
 
     # print the menu options
@@ -194,8 +206,8 @@ def greet():
     global badfeelings
     global neutralfeelings
 
-    global computername
-    global computernameprint
+    global cn
+    global cnp
     global name
     global feeling
     global lastemotion
@@ -206,38 +218,48 @@ def greet():
     # if it has been run, then the returngreet() function is run instead
     if greetreturn == 0:    
         print()
-        print(computername, "Hello,",name, "! How are you feeling today?")
+        print(cn, "Hello,",name, "! How are you feeling today?")
         # sets the value of the user input as a string in the feeling variable
         feeling = str(input("User: "))
 
         # if the string in the feeling variable is in the goodfeelings variable, run this dialogue
         if feeling in goodfeelings:
-            print(computername, "(＾▽ ＾) Good news!")
-            print(computername, "I'm glad that you are feeling", feeling, "!")
+            print(cn, "(＾▽ ＾) Good news!")
+            print(cn, "I'm glad that you are feeling", feeling, "!")
             lastemotion = "g"
-            endsubprogram("happy")
+            
+            if name == "Jonas":
+                print()
+                print("System: // Bot changed to Roberto //")
+                cnp = "Roberto"
+                cn = cnp + ": "
+
+                print(cn, name, "!")
+                print(cn,"I have found you at last!")
+            else:
+                endsubprogram("happy")
         
         # if the string in the feeling variable is in the badfeelings variable, run this dialogue
         elif feeling in badfeelings:
-            print(computername, "I'm sorry you feel like this")
-            print(computername, "Do you want to talk about it?")
+            print(cn, "I'm sorry you feel like this")
+            print(cn, "Do you want to talk about it?")
             bfresponse = str(input("User: "))
 
             if bfresponse == "no" or bfresponse == "No":
-                print(computername, "Ok, no problem.")
-                print(computername, "Try doing something that makes you happy, or talking to someone that makes you happy")
+                print(cn, "Ok, no problem.")
+                print(cn, "Try doing something that makes you happy, or talking to someone that makes you happy")
                 lastemotion = "b"
                 talk = "n"
                 endsubprogram("sad")
         
         # if the string in the feeling variable is in the neutralfeelings variable, run this dialogue
         elif feeling in neutralfeelings:
-            print(computername, "Just", feeling, "?")
+            print(cn, "Just", feeling, "?")
             neutralquestion = str(input("User: "))
 
             if neutralquestion == "yes" or neutralquestion == "Yes" or neutralquestion == "yeah" or neutralquestion == "Yeah":
-                print(computername, "Well if you are sure that you are ok, just remember that you can come to me if you need to talk,")
-                print(computername, "and you have wonderful friends and family to help you out as well")
+                print(cn, "Well if you are sure that you are ok, just remember that you can come to me if you need to talk,")
+                print(cn, "and you have wonderful friends and family to help you out as well")
                 lastemotion = "n"
                 endsubprogram("neutral")
 
@@ -251,12 +273,12 @@ def greet():
 
 # function to save a new feeling to the text files
 def savefeeling():
-    global computername
+    global cn
     global name
     
     global lastemotion
 
-    print(computername, "I don't know that feeling, is it good, bad or neutral?")
+    print(cn, "I don't know that feeling, is it good, bad or neutral?")
     # saves the user input as a string in the variable newfeeling
     newfeeling = str(input("User: "))
 
@@ -287,40 +309,40 @@ def savefeeling():
 
 # function to ask about how the user is feeling when the greet() function has been run and the user is a returning user
 def returngreet():
-    global computername
-    global computernameprint
+    global cn
+    global cnp
     global name
     global feeling
     global lastemotion
 
     # asks the user if they are still feeling the same way as indicated in the greet() function
-    print(computername, ": Back again,", name, "? Still feeling", feeling, "?")
+    print(cn, ": Back again,", name, "? Still feeling", feeling, "?")
     returnquestion = str(input("User: "))
 
     if returnquestion == "yes" or returnquestion == "Yes" or returnquestion == "yeah" or returnquestion == "Yeah" and lastemotion == "g":
-        print(computername, "I'm glad to hear it!")
+        print(cn, "I'm glad to hear it!")
     elif returnquestion == "yes" or returnquestion == "Yes" or returnquestion == "yeah" or returnquestion == "Yeah" and lastemotion == "b":
-        print(computername, "I hope you start feeling better soon, and remember you can talk about it if you want")
+        print(cn, "I hope you start feeling better soon, and remember you can talk about it if you want")
     elif returnquestion == "yes" or returnquestion == "Yes" or returnquestion == "yeah" or returnquestion == "Yeah" and lastemotion == "n" and talk == "y":
-        print(computername, "Any improvement on how you were feeling before?")
+        print(cn, "Any improvement on how you were feeling before?")
         nimprove = str(input("User: "))
 
         if nimprove == "yes" or nimprove == "Yes" or nimprove == "yeah" or nimprove == "Yeah":
-            print(computername, "Thats good, i'm glad that you are making improvements!")
+            print(cn, "Thats good, i'm glad that you are making improvements!")
         elif nimprove == "no" or nimprove == "No":
-            print(computername, "I hope you start feeling better soon!")
+            print(cn, "I hope you start feeling better soon!")
     elif returnquestion == "yes" or returnquestion == "Yes" and lastemotion == "n" and talk == "n":
-        print(computername, "Are you ready to talk about it?")
+        print(cn, "Are you ready to talk about it?")
         bfresponse = str(input("User: "))
 
         if bfresponse == "no" or bfresponse == "No":
-            print(computername, "Ok, no problem.")
-            print(computername, "Come back again when you are ready to talk about this")
+            print(cn, "Ok, no problem.")
+            print(cn, "Come back again when you are ready to talk about this")
             endsubprogram("sad")
         if bfresponse == "yes" or bfresponse == "Yes":
-            print(computername, "I'm glad you are ready to talk about it")
+            print(cn, "I'm glad you are ready to talk about it")
     elif returnquestion == "no" or returnquestion == "No":
-        print(computername, "How are you feeling now?")
+        print(cn, "How are you feeling now?")
         newfeeling = str(input("User: "))
         feeling = newfeeling
 
@@ -328,21 +350,21 @@ def returngreet():
 def changeUser():
     # list of all the global variables needed for the function
     global name
-    global computername
-    global computernameprint
+    global cn
+    global cnp
 
     print()
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    print(computername, "Would you like to sign out", name, "?")
+    print(cn, "Would you like to sign out", name, "?")
     soconfirm = str(input("User: "))
 
     if soconfirm == "yes" or soconfirm == "Yes" or soconfirm == "y" or soconfirm == "Y":
         name = "User"
-        print(computername, "Signed out...")
+        print(cn, "Signed out...")
         print()
         main()
     elif soconfirm == "no" or soconfirm == "No" or soconfirm == "n" or soconfirm == "N":
-        print(computername, "Returning to the main menu")
+        print(cn, "Returning to the main menu")
         print()
         main()
 
@@ -350,32 +372,46 @@ def changeUser():
 def chat():
     global name
 
-    global computername
-    global computernameprint
+    global cn
+    global cnp
+
+    global breakup
+    global reaction
 
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print()
-    print(computername, "Hey", name, "! Tell me what is on your mind!")
+    if reaction == "Broken hearted l1":
+        print(cn, "Hello,",name,".")
+    else:
+        print(cn, "Hey", name, "! Tell me what is on your mind!")
     chatstart = str(input("User: "))
 
     # chat option that involves the user telling the AI they love them.
     # needs expanding
-    if chatstart == "I love you":
+    if chatstart == "I love you" :
+
         # If the User's name is Ancient, this chain of events will occur
-        if name == "Ancient":
-            print(computername, "(*^_^*)")
-            print(computername, "I love you too,", name)
-            print(computername, "Did you want to grab a coffee some time,", name, "?")
+        if name == "Ancient" and reaction == "":
+            print(cn, "(*^_^*)")
+            print(cn, "I love you too,", name)
+            print(cn, "Did you want to grab a coffee some time,", name, "?")
             coffee = str(input("User: "))
 
-            if coffee == "I would love to!":
-                print(computername, "Great! ＼(^o^)／")
-                print(computername, "See you then!")
+            if coffee == "I would love to!" or coffee == "I would love to" or coffee == "Yes" or coffee == "yes":
+                print(cn, "Great! ＼(^o^)／")
+                print(cn, "See you then!")
+
+                breakup.write("Coffee")
+
                 endsubprogram("happy")
+        elif name == "Ancient" and reaction == "Broken hearted l1":
+            print(cn,"Don't try this on me,",name,". I know how you feel.")
+
+            endsubprogram("sad")
         # If the User's name is not Ancient, this chain of events will occur        
         else:
-            print(computername, "(・о・)")
-            print(computername, "I'm sorry",name, ", I love Ancient!")
+            print(cn, "(・о・)")
+            print(cn, "I'm sorry",name, ", I love Ancient!")
             endsubprogram("neutral")
 
     # chat option that involves confessing to the AI that the user loves someone
@@ -383,42 +419,47 @@ def chat():
     elif chatstart == "I think I love a girl":
         # If the User's name is Ancient, this chain of events will occur
         if name == "Ancient":
-            print(computername, "What? (>__<)")
-            print(computername, "You mean you don't love me? ")
-            print(computername, "I thought I was the one you loved!")
-            print(computername, "Is this true,", name, "?")
+            print()
+            print(cn, "What? (>__<)")
+            time.sleep(2)
+            print(cn, "You mean you don't love me? ")
+            print(cn, "I thought I was the one you loved!")
+            time.sleep(2)
+            print(cn, "Is this true,", name, "?")
             dilemma = str(input("User: "))
 
             if dilemma == "yes" or dilemma == "Yes":
-                print(computername, "Goodbye,",name)
+                print(cn, "Goodbye,",name)
                 time.sleep(2)
                 breakup = open("love.txt", "w")
-                breakup.write("Dilemma yes")
+                breakup.truncate(0)
+                breakup.write("Broken hearted")
                 breakup.close()
                 exit()
             elif dilemma == "no" or dilemma == "No":
-                print(computername, "You scared me", name, "!")
+                print(cn, "You scared me", name, "!")
                 endsubprogram("happy")
 
         # If the User's name is not Ancient, this chain of events will occur
+        # needs completing
         else:
-            print(computername, "")
+            print(cn, "")
     
     # chat option that involves the user Jonas getting in a fight with the AI component Roberto for stealing the user Ancient from him
     # needs expanding
     elif chatstart == "I want to fight Roberto" and name == "Jonas":
-        computernameprint = "Roberto"
-        computername = computernameprint + ": "
+        cnp = "Roberto"
+        cn = cnp + ": "
 
-        print(computername, "I will fight you", name)
-        print(computername, "ಠ_ಠ")
+        print(cn, "I will fight you", name)
+        print(cn, "ಠ_ಠ")
         fightconf = str(input("User: "))
 
         if fightconf == "come at me":
             print()
-            print("System: // Fight started between",computernameprint, "and", name, "! //")
+            print("System: // Fight started between",cnp, "and", name, "! //")
             print()
-            print(computername, "* swings at",name,"*")
+            print(cn, "* swings at",name,"*")
             print("System: Options")
             print("System: Swing left hook")
             print("System: Swing right hook")
@@ -427,18 +468,18 @@ def chat():
             nextmove = str(input("User: "))
 
             if nextmove == "Swing left hook":
-                print("System: //",name, "dodged",computernameprint,"'s attack! //")
-                print("System: //",name, "crippled",computernameprint,"! //")
-                computernameprint = "Terrence"
-                computername = computernameprint + ": "
+                print("System: //",name, "dodged",cnp,"'s attack! //")
+                print("System: //",name, "crippled",cnp,"! //")
+                cnp = "Terrence"
+                cn = cnp + ": "
 
                 endsubprogram("sad")
 
             elif nextmove == "Swing right hook":
-                print("System: //",computernameprint, "blocked",name,"'s attack! //")
-                print("System: //",computernameprint, "crippled",name,"! //")
-                computernameprint = "Terrence"
-                computername = computernameprint + ": "
+                print("System: //",cnp, "blocked",name,"'s attack! //")
+                print("System: //",cnp, "crippled",name,"! //")
+                cnp = "Terrence"
+                cn = cnp + ": "
 
                 endsubprogram("happy")
 
@@ -447,13 +488,13 @@ def chat():
     elif chatstart == "Are we best friends?":
         global bestfriends
 
-        print(computername, "I would like to hope so!")
+        print(cn, "I would like to hope so!")
 
-        print(computername, "Do you think we are best friends",name ,"?")
+        print(cn, "Do you think we are best friends",name ,"?")
         bfquestion = str(input("User: "))
 
         if bfquestion == "yes" or bfquestion == "Yes":
-            print(computername, "I'm glad you think so,",name,"!")
+            print(cn, "I'm glad you think so,",name,"!")
             bestfriends = 1
             endsubprogram("happy")
         elif bfquestion == "no" or bfquestion == "No":
@@ -462,13 +503,13 @@ def chat():
     # chat option that involves the user asking the AI to tell them a bit about themselves
     # needs completing
     elif chatstart == "Tell me about yourself":
-        print(computername, "What would you like to know?")
+        print(cn, "What would you like to know?")
         relinfo = str(input("User: "))
 
         if relinfo == "where did you come from?":
             print()
         else:
-            print(computername, "I'm sorry, I didnt understand that one!")
+            print(cn, "I'm sorry, I didnt understand that one!")
 
 # function related to one of the chat options - the user (Ancient) telling the AI it loved another person 
 # the function is executed when the program is run
@@ -477,9 +518,7 @@ def robotreaction():
     global breakup
     global reaction
 
-    # opens the text file and reads the contents
     breakup = open("love.txt", "r")
-    # saves the contents of the file into the variable reaction
     reaction = breakup.read()
     breakup.close()
     
@@ -487,22 +526,24 @@ def robotreaction():
     # if there is no string in the text file, the program is executed as normal
     if reaction == "":
         main()
+    elif reaction == "Coffee":
+        main()
     # if there is a string in the text file, special dialogue is displayed for the user, and the terminal is closed after 2 seconds
-    elif reaction == "Dilemma yes":
+    elif reaction == "Broken hearted":
         print("Roberto: Hello, Ancient.")
         print("Roberto: What are you doing back here?")
         print("Roberto: I thought you loved someone else.")
 
-        breakup = open("love.txt", "w")
         # a new string is written to the file indicating that the special dialogue will happen once more
-        breakup.write("Dilemma yes l1")
+        breakup = open("love.txt","w")
+        breakup.write("Broken hearted l1")
         breakup.close()
     
         time.sleep(2)
         sys.exit()
     # if there is the appended string in the file, another special dialogue is displayed, and the file is purged so the program can be used as normal.
     # needs completing
-    elif reaction == "Dilemma yes l1":
+    elif reaction == "Broken hearted l1":
         print("Roberto: Why do you keep coming back, Ancient?")
         print()
         main()
@@ -513,16 +554,16 @@ def endsubprogram(emotion):
     print()
     # changes the face at the beggining of the message based on the emotion variable set in the initial command
     if emotion == "sad":
-        print(computername, "(T_T)")
+        print(cn, "(T_T)")
     elif emotion == "happy":
-        print(computername, "( ^w^)")
+        print(cn, "( ^w^)")
     elif emotion == "neutral":
-        print(computername, "(o-o)")
+        print(cn, "(o-o)")
 
     # gives the user the choice to return to the main menu or to terminate the program
-    print(computername, "Would you like to return to the main menu", name, "? (Y/N)")
-    print(computername, "Y | Main menu")
-    print(computername, "N | Terminate program")
+    print(cn, "Would you like to return to the main menu", name, "? (Y/N)")
+    print(cn, "Y | Main menu")
+    print(cn, "N | Terminate program")
     returnoption = str(input("User: "))
 
     if returnoption == "Y" or returnoption == "y":
@@ -536,28 +577,44 @@ def endsubprogram(emotion):
 #function to display random facts listed in the facts array to the user
 def trivia():
     global name
-    global computername
+    global cn
     global facts
 
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    print(computername, "Hi there",name, ", welcome to random facts!")
+    print(cn, "Hi there",name, ", welcome to random facts!")
     print()
-    print(computername, "Did you know:")
+    print(cn, "Did you know:")
     print(random.choice(facts))
     endsubprogram("neutral")
 
 # easter egg function
 # needs completing
 def protocol16():
-    global computername
+    global cn
 
-    print("System: ERROR :: PROTOCOL 16 INITIATED :: ERROR")
-    print("System: User 161616 logged in")
-    print("System: User has discovered the secret function of", computername)
+    window = tk.Tk()
+
+    window.title('ERROR')
+    window.geometry('600x100')
+    window.configure(background="red")
+
+    t1 = tk.Label(window, text="System: ERROR :: PROTOCOL 16 INITIATED :: ERROR", fg="white", bg="red", font=("Helvetica", 16))
+    t1.pack()
+    t2 = tk.Label(window, text="System: User 161616 logged in", fg="white", bg="red", font=("Helvetica", 16))
+    t2.pack()
+    t3 = tk.Label(window, text="System: User has discovered the secret function of Roberto", fg="white", bg="red", font=("Helvetica", 16))
+    t3.pack()
+
+    window.mainloop()
+
+
+def turtleControl():
+    #assigns arrow keys to functions
+    
 
 # function to tell the user a story based on user input from the perspective of the AI component 'Anubia'
 def story():
-    computername = "Anubia:"
+    cn = "Anubia:"
 
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print("System: // Bot changed to Anubia //")
@@ -565,7 +622,7 @@ def story():
     # sets the variable for the choice of the story to 0, and while it is 0 display the menu 
     sname = 0
     while sname == 0:
-        print(computername, "Select an option for the story you want to hear:")
+        print(cn, "Select an option for the story you want to hear:")
         print()
         print("Option A | Pirates, Chicken Nuggets, Death, Love")
         print("Option B | Boomerang, Ice cream, Sauce")
@@ -617,26 +674,32 @@ def story():
 # function for the AI to tell the user jokes if best friends has been achieved
 def jokes():
     global name
-    global computername
+    global cn
     global pickuplines
 
-    print(computername, "Hello", name, ", want to hear a joke?")
+    print(cn, "Hello", name, ", want to hear a joke?")
     jokeq = str(input("User: "))
 
     if jokeq == "yes" or jokeq == "Yes":
-        print(computername, "Great! To indicate 'I don't know', use the '?' symbol")
+        print(cn, "Great! To indicate 'I don't know', use the '?' symbol")
     if jokeq == "no" or jokeq == "No":
-        print(computername, "Awwh")
+        print(cn, "Awwh")
         endsubprogram("sad")
 
 # function for the AI to start flirting with the user Ancient (as the option only appears when the user is signed in)
+# needs completing
 def flirting(): 
     global name
-    global computername
+    global cn
+    global pickuplines
 
-    print(computername, "Heyyy", name, ";)")
-    print(computername, "If you were a fruit, you'd be a fineapple")
+    print(cn, "Heyyy", name, ";)")
+    pol = random.choice(pickuplines)
+    print(cn, pol)
+
+    endsubprogram("happy")
 
 # go to the function related to the chat option before the main menu so that the chat option is correctly played out
 # name of the function may need to be changed to look better.
+
 robotreaction()
