@@ -607,10 +607,12 @@ def protocol16():
 
     window.mainloop()
 
-
 def turtleControl():
     #assigns arrow keys to functions
-    
+    tc = tk.Tk()
+
+    tc.geometry('50x50')
+    tc.title("Turtle")
 
 # function to tell the user a story based on user input from the perspective of the AI component 'Anubia'
 def story():
