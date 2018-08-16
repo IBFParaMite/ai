@@ -1,18 +1,21 @@
 import sys
+import time
 import tkinter as tk
 
 
 lastemotion = 0
 name = "User"
+feeling = 0
 
 def endsubprogram(emotion):
-    # print()
     # changes the face at the beggining of the message based on the emotion variable set in the initial command
-    if emotion == "sad":
+    # if emotion == "sad":
         # print(cn, "(T_T)")
-    elif emotion == "happy":
+        # reac = tk.Label()
+
+    # elif emotion == "happy":
         # print(cn, "( ^w^)")
-    elif emotion == "neutral":
+    # elif emotion == "neutral":
         # print(cn, "(o-o)")
 
     # gives the user the choice to return to the main menu or to terminate the program
@@ -22,8 +25,7 @@ def endsubprogram(emotion):
     returnoption = str(input("User: "))
 
     if returnoption == "Y" or returnoption == "y":
-        # print()
-        main()
+        getname()
     elif returnoption == "N" or returnoption == "n":
         # print("Goodbye",name,"!")
         time.sleep(3)
@@ -71,9 +73,10 @@ def getname():
     gn = tk.Tk()
 
     gn.title('Hello there!')
-    gn.geometry('250x70')
+    gn.geometry('200x70')
+    gn.configure(bg="black")
 
-    gnl = tk.Label(gn, text="Hello there! Whats your name?", font=("Helvetica", 10))
+    gnl = tk.Label(gn, text="Hello there! Whats your name?", font=("Helvetica", 10), bg="black", foreground="white")
     gnl.pack()
 
     n = tk.StringVar()
@@ -85,12 +88,13 @@ def getname():
 
     name = n.get()
 
-    sn = tk.Button(gn, text="Submit", command=mainmenu)
+    sn = tk.Button(gn, text="Submit", command=mainmenu, bg="black", foreground="white")
     sn.pack()
 
     gn.mainloop()
 
 def greet():
+    global feeling
     global lastemotion
 
     gr = tk.Tk()
@@ -153,6 +157,42 @@ def greet():
         savefeeling()
 
     gr.mainloop()
+
+# function to save a new feeling to the text files
+def savefeeling():
+    global name
+    global feeling
+    
+    global lastemotion
+
+    # print(cn, "I don't know that feeling, is it good, bad or neutral?")
+    # saves the user input as a string in the variable newfeeling
+    newfeeling = str(input("User: "))
+
+    # based on the value of newfeeling, writes the value to the corresponding list
+    if newfeeling == "good" or newfeeling == "Good":
+        print("Ok, I will remember", feeling, " is a good feeling")
+        lastemotion = "g"
+        gfi = open("Feelings/goodfeelings.txt","a")
+        # writes the feeling to the list with a new line in front of it so the text isn't clustered together
+        gfi.write("\n" + feeling)
+        gfi.close()
+
+    elif newfeeling == "bad" or newfeeling == "Bad":
+        print("Ok, I will remember", feeling, " is a bad feeling")
+        lastemotion = "b"
+        bfi = open("Feelings/badfeelings.txt","a")
+        bfi.write("\n" + feeling)
+        bfi.close()
+
+    elif newfeeling == "neutral" or newfeeling == "Neutral":
+        print("Ok, I will remember", feeling, " is a neutral feeling")
+        lastemotion = "n"
+        nfi = open("Feelings/neutralfeelings.txt","a")
+        nfi.write("\n" + feeling)
+        nfi.close()
+
+    endsubprogram("neutral")
 
 def chat():
     ch = tk.Tk()
