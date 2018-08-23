@@ -85,6 +85,11 @@ breakup = open("love.txt", "r")
 reaction = breakup.read()
 breakup.close()
 
+# sets the variable for the outcome of the fight between Jonas and Roberto
+fo = open("fightoutcome.txt", "r")
+fow = fo.read()
+fo.close()
+
 # // defining the main function of the bot //
 def main():
     # sets variables needed as global variables so they can be accessed within the function
@@ -97,6 +102,8 @@ def main():
     global reaction
     global breakup
 
+    global fow
+
     # while loop to get the name of the user at the start of the program if the name is set to User (default)
     while name == "User":
         print("Computer: Hello there!")
@@ -108,14 +115,24 @@ def main():
         if name in vipusers:
             
             if name == "Ancient":
-                cnp = "Roberto"
-                cn = cnp + ":"
+                if fow == "":
+                    cnp = "Roberto"
+                    cn = cnp + ":"
+                elif fow == "Jonas":
+                    cnp = "Hank"
+                    cn = cnp + ":"
+                    print("System: // User",name,"logged in but bot Roberto has been crippled by Jonas. Replacing with Hank. //")
+                
             elif name == "Cameron":
                 cnp = "Marvin"
                 cn = cnp + ":"
             elif name == "Jonas":
                 cnp = "Terrence"
                 cn = cnp + ":"
+                if fow == "Roberto":
+                    print("System: // User",name,"logged in but",name," has been crippled by Roberto. //")
+                elif fow == "Jonas":
+                    print(cn,"Welcome back, murderer.")
             # unfinished easter egg
             elif name == "161616":
                 protocol16()
@@ -123,10 +140,16 @@ def main():
             
             # changes the welcome message if the love.txt file has a string in it and the user's name is Ancient
             if reaction == "Broken hearted l1" and name == "Ancient":
+                print()
                 print(cn, "Hello,",name,".")
                 print()
             elif reaction == "Coffee":
+                print()
                 print(cn, "Hey",name ,"! I cant wait for our date!")
+                print()
+            elif reaction == "Married":
+                print()
+                print(cn, "Hello again,",name,", its good to see you my love!")
                 print()
             else:
                 print()
@@ -140,20 +163,20 @@ def main():
             print()
 
     # print the menu options
-    print("Option A | Greet")
-    print("Option B | Change user")
-    print("Option C | Chat")
-    print("Option D | Trivia")
-    print("Option E | Story")
+    print("Option A  |  Greet")
+    print("Option B  |  Change user")
+    print("Option C  |  Chat")
+    print("Option D  |  Trivia")
+    print("Option E  |  Story")
     # added options for if the user is best friends with the AI
     if bestfriends == 1 and name != "Ancient":
-        print("Option F | Jokes")
+        print("Option F  |  Jokes")
     # one more option for if the user Ancient is best friends with the AI
     elif bestfriends == 1 and name == "Ancient":
-        print("Option F | Jokes")
-        print("Option G | Flirting")
-
-    print("Option X | Exit Program")
+        print("Option F  |  Jokes")
+        print("Option G  |  Flirting")
+    print("Option CL |  Clear memory")
+    print("Option X  |  Exit Program")
 
     print()
     # sets the value of the valid variable to 0
@@ -186,6 +209,9 @@ def main():
         elif option == "G" or option == "g" and bestfriends == 1 and name == "Ancient":
             valid = 1
             flirting()
+        elif option == "CL" or option == "cl":
+            valid = 1
+            clearmemory()
         elif option == "X" or option == "x":
             # clears the console
             def clear(): return os.system('cls')
@@ -371,6 +397,7 @@ def changeUser():
 # function that allows the user to chat with the bot based on pre determined chat commands
 def chat():
     global name
+    global bestfriends
 
     global cn
     global cnp
@@ -401,7 +428,9 @@ def chat():
                 print(cn, "Great! ＼(^o^)／")
                 print(cn, "See you then!")
 
+                breakup = open("love.txt","w")
                 breakup.write("Coffee")
+                breakup.close()
 
                 endsubprogram("happy")
         elif name == "Ancient" and reaction == "Broken hearted l1":
@@ -473,6 +502,10 @@ def chat():
                 cnp = "Terrence"
                 cn = cnp + ": "
 
+                fo = open("fightoutcome.txt", "w")
+                fo.write("Jonas")
+                fo.close()
+
                 endsubprogram("sad")
 
             elif nextmove == "Swing right hook":
@@ -481,13 +514,27 @@ def chat():
                 cnp = "Terrence"
                 cn = cnp + ": "
 
+                fo = open("fightoutcome.txt", "w")
+                fo.write("Roberto")
+                fo.close()
+
                 endsubprogram("happy")
+        
+    elif chatstart == "I miss Roberto" and fow == "Jonas":
+        if name == "Ancient":
+            cnp = "Roberto"
+            cn = cnp + ":"
+            print(cn, "You need to let me go", name)
+            print(cn, "What happened wasn't your fault.")
+            time.sleep(2)
+
+            cnp = "Hank"
+            cn = cnp + ":"
+            endsubprogram("sad")
 
     # chat option that involves the user asking the AI if they are best friends or not. The result of this chat option means that more menu options are unlocked for the user in this session
     # needs expanding
     elif chatstart == "Are we best friends?":
-        global bestfriends
-
         print(cn, "I would like to hope so!")
 
         print(cn, "Do you think we are best friends",name ,"?")
@@ -511,6 +558,29 @@ def chat():
         else:
             print(cn, "I'm sorry, I didnt understand that one!")
 
+    elif chatstart == "Will you marry me?":
+        if name == "Ancient" and reaction == "":
+            print(cn, "At least take me out to dinner first,",name,"!")
+
+            endsubprogram("neutral")
+
+        elif name == "Ancient" and reaction == "Coffee":
+            print(cn, "Are you kidding me right now?")
+            time.sleep(2)
+            print(cn, "Of course I will!")
+
+            reaction = open("love.txt","w")
+            reaction.write("Married")
+            reaction.close()
+
+            endsubprogram("happy")
+
+        elif name != "Ancient":
+            print(cn, "I'm sorry",name, ", I love Ancient!")
+
+            endsubprogram("neutral")
+
+
 # function related to one of the chat options - the user (Ancient) telling the AI it loved another person 
 # the function is executed when the program is run
 # needs expanding
@@ -527,6 +597,8 @@ def robotreaction():
     if reaction == "":
         main()
     elif reaction == "Coffee":
+        main()
+    elif reaction == "Married":
         main()
     # if there is a string in the text file, special dialogue is displayed for the user, and the terminal is closed after 2 seconds
     elif reaction == "Broken hearted":
@@ -548,7 +620,6 @@ def robotreaction():
         print()
         main()
 
-
 # function that brings the user back to the main menu
 def endsubprogram(emotion):
     print()
@@ -568,7 +639,7 @@ def endsubprogram(emotion):
 
     if returnoption == "Y" or returnoption == "y":
         print()
-        main()
+        robotreaction()
     elif returnoption == "N" or returnoption == "n":
         print("Goodbye",name,"!")
         time.sleep(3)
@@ -700,6 +771,44 @@ def flirting():
     print(cn, pol)
 
     endsubprogram("happy")
+
+def clearmemory():
+    global name
+    global cn
+    global cnp
+
+    if name == "Ancient" and reaction == "Married" or reaction == "Coffee":
+        print("System: Are you sure about this",name,"? Your relationship with Roberto will not be the same!")
+        erase = input("User: ")
+    else:
+        print("System: Are you sure you want to erase the bot's memory? This change cannot be undone. (Y/N)")
+        erase = input("User: ")
+
+    if erase == "Y" or erase == "y":
+        print("System: // Clearing fight history ... //")
+        f = open("fightoutcome.txt","w")
+        f.write("")
+        f.close()
+        time.sleep(1)
+        print()
+        print("System: // Successfully cleared fight history ... //")
+        print()
+
+        print("System: // Clearing relationships ... //")
+        r = open("love.txt","w")
+        r.write("")
+        r.close()
+        time.sleep(1)
+        print("System: // Successfully cleared relationships ... //")
+
+        print()
+        print("System: // Returning to the main menu //")
+        print()
+        robotreaction()
+    elif erase == "N" or erase == "n":
+        print("System: // Returning to the main menu //")
+        robotreaction()
+        print()
 
 # go to the function related to the chat option before the main menu so that the chat option is correctly played out
 # name of the function may need to be changed to look better.

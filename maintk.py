@@ -36,62 +36,60 @@ def navbar(windowname):
     mmb.pack()
 
 def getname():
+    global name
+    mm = tk.Tk()
+
+    mm.title('Main menu')
+    mm.geometry('200x240')
+    mm.configure(bg="black")
+
     def mainmenu():
-        global name
-        mm = tk.Tk()
+        mms1 = tk.Frame(mm, bg="black", width=200, height=50)
+        mms1.pack()
 
-        mm.title('Main menu')
-        mm.geometry('200x210')
-        mm.configure(bg="black")
 
-        mml = tk.Label(mm, text="Hello there,", font=("Helvetica", 10), bg="black", foreground="white")
-        mml.pack()
+        mml = tk.Label(mm, text="Hello there", font=("Helvetica", 10), bg="black", foreground="white")
+        mml.pack(side="top")
 
         mmn = tk.Label(mm, textvariable = name, font=("Helvetica", 10), bg="black", foreground="white")
-        mmn.pack()
+        mmn.pack(side="top")
 
-        greetb = tk.Button(mm, text="Greet", command=greet, width='20', bg="black", foreground="white")
-        greetb.pack() 
+        greetb = tk.Button(mm, text="Greet", command=greet, bg="black", foreground="white")
+        greetb.pack(fill="x", side="bottom") 
 
-        chatb = tk.Button(mm, text="Chat", command=chat, width='20', bg="black", foreground="white")
-        chatb.pack()
+        chatb = tk.Button(mm, text="Chat", command=chat, bg="black", foreground="white")
+        chatb.pack(fill="x")
 
-        triviab = tk.Button(mm, text="Trivia", command=trivia, width='20', bg="black", foreground="white")
-        triviab.pack()
+        triviab = tk.Button(mm, text="Trivia", command=trivia, bg="black", foreground="white")
+        triviab.pack(fill="x")
 
-        storyb = tk.Button(mm, text="Story", command=story, width='20', bg="black", foreground="white")
-        storyb.pack()
+        storyb = tk.Button(mm, text="Story", command=story, bg="black", foreground="white")
+        storyb.pack(fill="x")
 
-        chuserb = tk.Button(mm, text="Change User", command=changeUser, width='20', bg="black", foreground="white")
-        chuserb.pack()
+        chuserb = tk.Button(mm, text="Change User", command=changeUser, bg="black", foreground="white")
+        chuserb.pack(fill="x")
 
-        exitb = tk.Button(mm, text="Exit", command=exit, width='20', bg="black", foreground="white")
-        exitb.pack()
+        exitb = tk.Button(mm, text="Exit", command=exit, bg="black", foreground="white")
+        exitb.pack(fill="x")
 
-    global name
+    mms2 = tk.Frame(mm)
+    mms2.pack()
 
-    gn = tk.Tk()
-
-    gn.title('Hello there!')
-    gn.geometry('200x70')
-    gn.configure(bg="black")
-
-    gnl = tk.Label(gn, text="Hello there! Whats your name?", font=("Helvetica", 10), bg="black", foreground="white")
+    gnl = tk.Label(mm, text="Hello there! Whats your name?", font=("Helvetica", 10), bg="black", foreground="white")
     gnl.pack()
 
     n = tk.StringVar()
 
-    e = tk.Entry(gn, textvariable = name)
+    e = tk.Entry(mm, textvariable = name)
     e.pack()
+
+    mainmenu()
 
     n.set("User")
 
     name = n.get()
 
-    sn = tk.Button(gn, text="Submit", command=mainmenu, bg="black", foreground="white")
-    sn.pack()
-
-    gn.mainloop()
+    mm.mainloop()
 
 def greet():
     global feeling
@@ -138,7 +136,8 @@ def greet():
     elif feeling in badfeelings:
         # print(cn, "I'm sorry you feel like this")
         # print(cn, "Do you want to talk about it?")
-        bfresponse = str(input("User: "))
+        # bfresponse = str(input("User: "))
+        print()
         
     # if the string in the feeling variable is in the neutralfeelings variable, run this dialogue
     elif feeling in neutralfeelings:
@@ -211,10 +210,41 @@ def trivia():
     tr.mainloop()
 
 def story():
+    choice = 0
+    story = 0
+
     st = tk.Tk()
 
     st.title('Story')
-    st.geometry('600x600')
+    st.geometry('300x300')
+    st.configure(bg="black")
+
+    wt = tk.Label(st, text="Please choose a story option!", font=("Helvetica", 10), bg="black", foreground="white")
+    wt.pack()
+    
+    c = tk.Entry(st)
+    c.pack()
+
+    choice = c.get()
+
+    if choice == "a":
+        s = open("Stories/story1.txt")
+        story = s.read()
+        s.close()
+        spr = tk.Text(st, textvariable = story, bg="black", foreground="white")
+        spr.pack()
+    elif choice == "b":
+        s = open("Stories/story2.txt")
+        story = s.read()
+        s.close()
+        spr = tk.Text(st, textvariable = story, bg="black", foreground="white")
+        spr.pack()
+    elif choice == "c":
+        s = open("Stories/story3.txt")
+        story = s.read()
+        s.close()
+        spr = tk.Text(st, textvariable = story, bg="black", foreground="white")
+        spr.pack()
 
     st.mainloop()
 
