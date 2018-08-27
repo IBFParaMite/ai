@@ -40,22 +40,12 @@ def getname():
     mm = tk.Tk()
 
     mm.title('Main menu')
-    mm.geometry('200x240')
+    mm.geometry('200x270')
     mm.configure(bg="black")
 
     def mainmenu():
-        mms1 = tk.Frame(mm, bg="black", width=200, height=50)
-        mms1.pack()
-
-
-        mml = tk.Label(mm, text="Hello there", font=("Helvetica", 10), bg="black", foreground="white")
-        mml.pack(side="top")
-
-        mmn = tk.Label(mm, textvariable = name, font=("Helvetica", 10), bg="black", foreground="white")
-        mmn.pack(side="top")
-
         greetb = tk.Button(mm, text="Greet", command=greet, bg="black", foreground="white")
-        greetb.pack(fill="x", side="bottom") 
+        greetb.pack(fill="x") 
 
         chatb = tk.Button(mm, text="Chat", command=chat, bg="black", foreground="white")
         chatb.pack(fill="x")
@@ -72,23 +62,31 @@ def getname():
         exitb = tk.Button(mm, text="Exit", command=exit, bg="black", foreground="white")
         exitb.pack(fill="x")
 
-    mms2 = tk.Frame(mm)
-    mms2.pack()
-
-    gnl = tk.Label(mm, text="Hello there! Whats your name?", font=("Helvetica", 10), bg="black", foreground="white")
+    gnl = tk.Label(mm, text="What is your name?", font=("Helvetica", 10), bg="black", foreground="white")
     gnl.pack()
 
-    n = tk.StringVar()
+    def returnEntry(arg=None):
+        result = "Hello there, " + myEntry.get()
+        resultLabel.config(text=result)
+    
+    # Create the Entry widget
+    myEntry = tk.Entry(mm, width=20)
+    myEntry.focus()
+    myEntry.bind("<Return>",returnEntry)
+    myEntry.pack()
+    
+    # Create the Enter button
+    enterEntry = tk.Button(mm, text= "Enter", command=returnEntry, bg="black", foreground="white")
+    enterEntry.pack(fill="x")
 
-    e = tk.Entry(mm, textvariable = name)
-    e.pack()
+    # Create and emplty Label to put the result in
+    resultLabel = tk.Label(mm, text = "", font=("Helvetica", 10), bg="black", foreground="white")
+    resultLabel.pack(fill="x")
+
+    blksp = tk.Label(mm, bg="black", foreground="white")
+    blksp.pack()
 
     mainmenu()
-
-    n.set("User")
-
-    name = n.get()
-
     mm.mainloop()
 
 def greet():
@@ -210,41 +208,49 @@ def trivia():
     tr.mainloop()
 
 def story():
-    choice = 0
-    story = 0
-
     st = tk.Tk()
 
     st.title('Story')
-    st.geometry('300x300')
+    st.geometry('200x100')
     st.configure(bg="black")
 
     wt = tk.Label(st, text="Please choose a story option!", font=("Helvetica", 10), bg="black", foreground="white")
     wt.pack()
     
-    c = tk.Entry(st)
-    c.pack()
+    def returnEntry(arg=None):
+        result = myEntry.get()
 
-    choice = c.get()
+        if result == "a":
+            s = open("Stories/story1.txt","r")
+            result = s.read()
+            s.close()
+            st.geometry('1150x270')
+        elif result == "b":
+            s = open("Stories/story2.txt","r")
+            result = s.read()
+            s.close()
+            st.geometry('1550x320')
+        elif result == "c":
+            s = open("Stories/story3.txt","r")
+            result = s.read()
+            s.close()
+            st.geometry('1300x550')
 
-    if choice == "a":
-        s = open("Stories/story1.txt")
-        story = s.read()
-        s.close()
-        spr = tk.Text(st, textvariable = story, bg="black", foreground="white")
-        spr.pack()
-    elif choice == "b":
-        s = open("Stories/story2.txt")
-        story = s.read()
-        s.close()
-        spr = tk.Text(st, textvariable = story, bg="black", foreground="white")
-        spr.pack()
-    elif choice == "c":
-        s = open("Stories/story3.txt")
-        story = s.read()
-        s.close()
-        spr = tk.Text(st, textvariable = story, bg="black", foreground="white")
-        spr.pack()
+        resultLabel.config(text=result)
+    
+    # Create the Entry widget
+    myEntry = tk.Entry(st, width=20)
+    myEntry.focus()
+    myEntry.bind("<Return>",returnEntry)
+    myEntry.pack()
+    
+    # Create the Enter button
+    enterEntry = tk.Button(st, text= " Enter ", command=returnEntry, bg="black", foreground="white")
+    enterEntry.pack()
+
+    # Create and emplty Label to put the result in
+    resultLabel = tk.Label(st, text = "", font=("Helvetica", 10), bg="black", foreground="white", justify="left")
+    resultLabel.pack(fill="x")
 
     st.mainloop()
 
