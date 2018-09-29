@@ -700,11 +700,11 @@ def jokes():
     global pickuplines
 
     print(cn, "Hello", name, ", want to hear a joke?")
-    jokeq.lower() = str(input("User: "))
+    jokeq = str(input("User: "))
 
-    if jokeq == "yes"
+    if jokeq.lower == "yes":
         print(cn, "Great! To indicate 'I don't know', use the '?' symbol")
-    if jokeq == "no"
+    if jokeq.lower == "no":
         print(cn, "Awwh")
         endsubprogram("sad")
 
