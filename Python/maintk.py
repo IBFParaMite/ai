@@ -34,7 +34,6 @@ def endsubprogram(emotion):
     if returnoption.lower() == "y":
         getname()
     elif returnoption.lower() == "n":
-        time.sleep(3)
         sys.exit()
 
 def getname():
@@ -124,15 +123,15 @@ def greet():
         global feeling
         global lastemotion
 
-        gfi = open("Feelings/goodfeelings.txt","r")
+        gfi = open("Text Files/Feelings/goodfeelings.txt","r")
         goodfeelings = gfi.read()
         gfi.close()
 
-        bfi = open("Feelings/badfeelings.txt","r")
+        bfi = open("Text Files/Feelings/badfeelings.txt","r")
         badfeelings = bfi.read()
         bfi.close()
 
-        nfi = open("Feelings/neutralfeelings.txt","r")
+        nfi = open("Text Files/Feelings/neutralfeelings.txt","r")
         neutralfeelings = nfi.read()
         nfi.close()
 
@@ -181,18 +180,15 @@ def greet():
         if feeling in goodfeelings:
             entryresponse("g")
 
-            time.sleep(2)
             endsubprogram("happy")
         elif feeling in badfeelings:
             entryresponse("b")
 
-            time.sleep(2)
             endsubprogram("sad")
         
         elif feeling in neutralfeelings:
             entryresponse("n")
 
-            time.sleep(2)
             endsubprogram("neutral")
 
         else:
@@ -212,7 +208,7 @@ def greet():
 
                 lastemotion = "g"
 
-                gfi = open("Feelings/goodfeelings.txt","a")
+                gfi = open("Text Files/Feelings/goodfeelings.txt","a")
                 gfi.write("\n" + feeling)
                 gfi.close()
 
@@ -222,7 +218,7 @@ def greet():
 
                 lastemotion = "b"
 
-                bfi = open("Feelings/badfeelings.txt","a")
+                bfi = open("Text Files/Feelings/badfeelings.txt","a")
                 bfi.write("\n" + feeling)
                 bfi.close()
 
@@ -232,11 +228,10 @@ def greet():
 
                 lastemotion = "n"
 
-                nfi = open("Feelings/neutralfeelings.txt","a")
+                nfi = open("Text Files/Feelings/neutralfeelings.txt","a")
                 nfi.write("\n" + feeling)
                 nfi.close()
 
-            time.sleep(2)
             endsubprogram("neutral")
 
     myEntry = tk.Entry(gr, width=20)
@@ -279,7 +274,7 @@ def chat():
 
                         chl3.configure(text="Great! ＼(^o^)／ \n See you then!")
 
-                        date = open("love.txt","w")
+                        date = open("Text Files/love.txt","w")
                         date.write("Coffee")
                         date.close()
 
@@ -305,7 +300,7 @@ def chat():
                         chdt = "Goodbye " + name
                         chl2.configure(text=chdt)
 
-                        breakup = open("love.txt", "w")
+                        breakup = open("Text Files/love.txt", "w")
                         breakup.truncate(0)
                         breakup.write("Broken hearted")
                         breakup.close()
@@ -335,7 +330,7 @@ def chat():
                     chl4.configure(text="*Jonas swings left hook at Roberto*")
                     chl5.configure(text="System: // Jonas dodged Roberto's attack! // \n System: // Jonas crippled Roberto! //")
 
-                    fo = open("fightoutcome.txt", "w")
+                    fo = open("Text Files/fightoutcome.txt", "w")
                     fo.write("Jonas")
                     fo.close()
 
@@ -345,7 +340,7 @@ def chat():
                     chl4.configure(text="*Jonas swings left hook at Roberto*")
                     chl5.configure(text="System: // Roberto dodged Jonas's attack! // \n System: // Roberto crippled Jonas! //")
 
-                    fo = open("fightoutcome.txt", "w")
+                    fo = open("Text Files/fightoutcome.txt", "w")
                     fo.write("Roberto")
                     fo.close()
 
@@ -410,17 +405,17 @@ def story():
         result = myEntry.get()
 
         if result == "a":
-            s = open("Stories/story1.txt","r", encoding="utf8")
+            s = open("Text Files/Stories/story1.txt","r", encoding="utf8")
             story = s.read()
             s.close()
             st.geometry('1170x290')
         elif result == "b":
-            s = open("Stories/story2.txt","r", encoding="utf8")
+            s = open("Text Files/Stories/story2.txt","r", encoding="utf8")
             story = s.read()
             s.close()
             st.geometry('1550x330')
         elif result == "c":
-            s = open("Stories/story3.txt","r", encoding="utf8")
+            s = open("Text Files/Stories/story3.txt","r", encoding="utf8")
             story = s.read()
             s.close()
             st.geometry('1300x560')
