@@ -30,7 +30,8 @@ namespace ConsoleApp
             Console.WriteLine("Are you male or female, {0}?", person1.FirstName);
             person1.Sex = Console.ReadLine();
 
-            Console.WriteLine("Perfect, {0}! What ");
+            Console.WriteLine("Perfect, {0}! What would you like to do?");
+            MainMenu();
         }
 
         static void MainMenu()

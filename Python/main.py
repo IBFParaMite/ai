@@ -6,8 +6,6 @@ import time
 
 import tkinter as tk
 
-import turtle
-
 # list of arrays
 # array for the names that the bot can take if the user is not part of the VIP list
 names = ["Hank", "Roberto", "Sylvia",
@@ -111,8 +109,7 @@ def main():
         name = str(input("User: "))
 
         # searches if the name given is in the vipusers array and displays a certain message if true
-        if name in vipusers:
-            
+        if name in vipusers:    
             if name == "Ancient":
                 if fow == "":
                     cnp = "Roberto"
