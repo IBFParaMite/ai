@@ -39,21 +39,21 @@ pickuplines = ["If you were a fruit, you'd be a fineapple",
 
 # feelings import
 # opens the goodfeelings.txt file in read mode
-gfi = open("Feelings/goodfeelings.txt","r+")
+gfi = open("./Text Files/Feelings/goodfeelings.txt","r+")
 # stores the values from the file in a variable
 goodfeelings = gfi.read()
 # closes the file
 gfi.close()
 
 # opens the badfeelings.txt file in read mode
-bfi = open("Feelings/badfeelings.txt","r+")
+bfi = open("./Text Files/Feelings/badfeelings.txt","r+")
 # stores the values from the file in a variable
 badfeelings = bfi.read()
 # closes the file
 bfi.close()
 
 # opens the neutralfeelings.txt file in read mode
-nfi = open("Feelings/neutralfeelings.txt","r+")
+nfi = open("./Text Files/Feelings/neutralfeelings.txt","r+")
 # stores the values from the file in a variable
 neutralfeelings = nfi.read()
 # closes the file
@@ -79,12 +79,12 @@ bestfriends = 0
 greetreturn = 0
 
 # sets the variable for if the user tells the AI they love someone else
-breakup = open("love.txt", "r")
+breakup = open("./Text Files/love.txt", "r")
 reaction = breakup.read()
 breakup.close()
 
 # sets the variable for the outcome of the fight between Jonas and Roberto
-fo = open("fightoutcome.txt", "r")
+fo = open("./Text Files/fightoutcome.txt", "r")
 fow = fo.read()
 fo.close()
 
@@ -290,7 +290,7 @@ def savefeeling():
     if newfeeling == "good" or newfeeling == "Good":
         print("Ok, I will remember", feeling, " is a good feeling")
         lastemotion = "g"
-        gfi = open("Text Files/Feelings/goodfeelings.txt","a")
+        gfi = open("./Text Files/Feelings/goodfeelings.txt","a")
         # writes the feeling to the list with a new line in front of it so the text isn't clustered together
         gfi.write("\n" + feeling)
         gfi.close()
@@ -298,14 +298,14 @@ def savefeeling():
     elif newfeeling == "bad" or newfeeling == "Bad":
         print("Ok, I will remember", feeling, " is a bad feeling")
         lastemotion = "b"
-        bfi = open("Text Files/Feelings/badfeelings.txt","a")
+        bfi = open("./Text Files/Feelings/badfeelings.txt","a")
         bfi.write("\n" + feeling)
         bfi.close()
 
     elif newfeeling == "neutral" or newfeeling == "Neutral":
         print("Ok, I will remember", feeling, " is a neutral feeling")
         lastemotion = "n"
-        nfi = open("Text Files/Feelings/neutralfeelings.txt","a")
+        nfi = open("./Text Files/Feelings/neutralfeelings.txt","a")
         nfi.write("\n" + feeling)
         nfi.close()
 
@@ -397,7 +397,7 @@ def chat():
             if coffee == "I would love to!" or coffee == "I would love to" or coffee == "Yes" or coffee == "yes":
                 print(cn, "Great! ＼(^o^)／ \nSee you then!")
 
-                breakup = open("Text Files/love.txt","w")
+                breakup = open("./Text Files/love.txt","w")
                 breakup.write("Coffee")
                 breakup.close()
 
@@ -426,7 +426,7 @@ def chat():
             if dilemma == "yes" or dilemma == "Yes":
                 print(cn, "Goodbye,",name)
                 time.sleep(2)
-                breakup = open("Text Files/love.txt", "w")
+                breakup = open("./Text Files/love.txt", "w")
                 breakup.truncate(0)
                 breakup.write("Broken hearted")
                 breakup.close()
@@ -461,7 +461,7 @@ def chat():
                 cnp = "Terrence"
                 cn = cnp + ": "
 
-                fo = open("Text Files/fightoutcome.txt", "w")
+                fo = open("./Text Files/fightoutcome.txt", "w")
                 fo.write("Jonas")
                 fo.close()
 
@@ -473,7 +473,7 @@ def chat():
                 cnp = "Terrence"
                 cn = cnp + ": "
 
-                fo = open("Text Files/fightoutcome.txt", "w")
+                fo = open("./Text Files/fightoutcome.txt", "w")
                 fo.write("Roberto")
                 fo.close()
 
@@ -527,7 +527,7 @@ def chat():
             time.sleep(2)
             print(cn, "Of course I will!")
 
-            reaction = open("Text Files/love.txt","w")
+            reaction = open("./Text Files/love.txt","w")
             reaction.write("Married")
             reaction.close()
 
@@ -546,7 +546,7 @@ def robotreaction():
     global breakup
     global reaction
 
-    breakup = open("Text Files/love.txt", "r")
+    breakup = open("./Text Files/love.txt", "r")
     reaction = breakup.read()
     breakup.close()
     
@@ -563,7 +563,7 @@ def robotreaction():
         print("Roberto: Hello, Ancient. \nRoberto: What are you doing back here? \nRoberto: I thought you loved someone else.")
 
         # a new string is written to the file indicating that the special dialogue will happen once more
-        breakup = open("Text Files/love.txt","w")
+        breakup = open("./Text Files/love.txt","w")
         breakup.write("Broken hearted l1")
         breakup.close()
     
@@ -663,7 +663,7 @@ def story():
     # display story one
     # there is a 4 second sleep period in between each line for increased realism
     if sname == 1:
-        s1 = open("Text Files/Stories/story1.txt")
+        s1 = open("./Text Files/Stories/story1.txt")
         story1 = s1.read()
         s1.close()
         print(story1)
@@ -673,7 +673,7 @@ def story():
     # display story two
     # there is a 4 second sleep period in between each line for increased realism
     elif sname == 2:
-        s2 = open("Text Files/Stories/story2.txt")
+        s2 = open("./Text Files/Stories/story2.txt")
         story2 = s2.read()
         s2.close()
         print(story2)
@@ -683,7 +683,7 @@ def story():
     # display story three
     # there is a 4 second sleep period in between each line for increased realism
     elif sname == 3:
-        s3 = open("Text Files/Stories/story3.txt")
+        s3 = open("./Text Files/Stories/story3.txt")
         story3 = s3.read()
         s3.close()
         print(story3)
@@ -732,13 +732,13 @@ def clearmemory():
 
     if erase == "Y" or erase == "y":
         print("System: // Clearing fight history ... //")
-        f = open("Text Files/fightoutcome.txt","w")
+        f = open("./Text Files/fightoutcome.txt","w")
         f.write("")
         f.close()
         time.sleep(1)
         print("\nSystem: // Successfully cleared fight history ... // \n")
         print("System: // Clearing relationships ... // \n")
-        r = open("Text Files/love.txt","w")
+        r = open("./Text Files/love.txt","w")
         r.write("")
         r.close()
         time.sleep(1)
@@ -751,5 +751,4 @@ def clearmemory():
 
 # go to the function related to the chat option before the main menu so that the chat option is correctly played out
 # name of the function may need to be changed to look better.
-
 robotreaction()
