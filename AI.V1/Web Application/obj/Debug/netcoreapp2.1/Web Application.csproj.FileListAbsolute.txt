@@ -1,0 +1,32 @@
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\bin\Debug\netcoreapp2.1\Web Application.deps.json
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\bin\Debug\netcoreapp2.1\Web Application.runtimeconfig.json
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\bin\Debug\netcoreapp2.1\Web Application.runtimeconfig.dev.json
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\bin\Debug\netcoreapp2.1\Web Application.dll
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\bin\Debug\netcoreapp2.1\Web Application.pdb
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\bin\Debug\netcoreapp2.1\Web Application.Views.dll
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\bin\Debug\netcoreapp2.1\Web Application.Views.pdb
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.csprojAssemblyReference.cache
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.csproj.CoreCompileInputs.cache
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.RazorAssemblyInfo.cache
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.RazorAssemblyInfo.cs
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.AssemblyInfoInputs.cache
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.AssemblyInfo.cs
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.TagHelpers.input.cache
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.TagHelpers.output.cache
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.RazorCoreGenerate.cache
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Razor\Pages\About.g.cshtml.cs
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Razor\Pages\Contact.g.cshtml.cs
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Razor\Pages\Error.g.cshtml.cs
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Razor\Pages\Index.g.cshtml.cs
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Razor\Pages\Privacy.g.cshtml.cs
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_CookieConsentPartial.g.cshtml.cs
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_Layout.g.cshtml.cs
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Razor\Pages\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Razor\Pages\_ViewImports.g.cshtml.cs
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Razor\Pages\_ViewStart.g.cshtml.cs
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.RazorTargetAssemblyInfo.cache
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.RazorTargetAssemblyInfo.cs
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.Views.pdb
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.dll
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.pdb
+C:\Users\camer\Documents\GitHub\ai\Legacy\Web Application\obj\Debug\netcoreapp2.1\Web Application.csproj.CopyComplete

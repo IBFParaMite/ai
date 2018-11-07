@@ -1,0 +1,2 @@
+C:\Users\camer\Documents\GitHub\ai\AI.V2\AI.Class_Library\AI.Class_Library.csproj;neutral
+C:\Users\camer\Documents\GitHub\ai\AI.V2\AI.Core\AI.Core.csproj;x86
