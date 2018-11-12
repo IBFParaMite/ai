@@ -1,0 +1,10 @@
+D:\Projects\GitHub\ai\AI.V2\AI.Core\bin\Debug\AI.Core.exe.config
+D:\Projects\GitHub\ai\AI.V2\AI.Core\bin\Debug\AI.Core.exe
+D:\Projects\GitHub\ai\AI.V2\AI.Core\bin\Debug\AI.Core.pdb
+D:\Projects\GitHub\ai\AI.V2\AI.Core\bin\Debug\AI.Class_Library.dll
+D:\Projects\GitHub\ai\AI.V2\AI.Core\bin\Debug\AI.Class_Library.pdb
+D:\Projects\GitHub\ai\AI.V2\AI.Core\obj\Debug\AI.Core.csprojAssemblyReference.cache
+D:\Projects\GitHub\ai\AI.V2\AI.Core\obj\Debug\AI.Core.csproj.CoreCompileInputs.cache
+D:\Projects\GitHub\ai\AI.V2\AI.Core\obj\Debug\AI.Core.csproj.CopyComplete
+D:\Projects\GitHub\ai\AI.V2\AI.Core\obj\Debug\AI.Core.exe
+D:\Projects\GitHub\ai\AI.V2\AI.Core\obj\Debug\AI.Core.pdb

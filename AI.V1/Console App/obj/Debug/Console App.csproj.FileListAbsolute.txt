@@ -5,3 +5,10 @@ C:\Users\camer\Documents\GitHub\ai\AI.V1\Console App\obj\Debug\Console App.cspro
 C:\Users\camer\Documents\GitHub\ai\AI.V1\Console App\obj\Debug\Console App.csproj.CoreCompileInputs.cache
 C:\Users\camer\Documents\GitHub\ai\AI.V1\Console App\obj\Debug\Console App.exe
 C:\Users\camer\Documents\GitHub\ai\AI.V1\Console App\obj\Debug\Console App.pdb
+D:\Projects\GitHub\ai\AI.V1\Console App\bin\Debug\Console App.exe.config
+D:\Projects\GitHub\ai\AI.V1\Console App\bin\Debug\Console App.exe
+D:\Projects\GitHub\ai\AI.V1\Console App\bin\Debug\Console App.pdb
+D:\Projects\GitHub\ai\AI.V1\Console App\obj\Debug\Console App.csprojAssemblyReference.cache
+D:\Projects\GitHub\ai\AI.V1\Console App\obj\Debug\Console App.csproj.CoreCompileInputs.cache
+D:\Projects\GitHub\ai\AI.V1\Console App\obj\Debug\Console App.exe
+D:\Projects\GitHub\ai\AI.V1\Console App\obj\Debug\Console App.pdb
