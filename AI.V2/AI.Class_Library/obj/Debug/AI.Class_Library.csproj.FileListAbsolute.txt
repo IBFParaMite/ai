@@ -1,6 +1,0 @@
-D:\Projects\GitHub\ai\AI.V2\AI.Class_Library\bin\Debug\AI.Class_Library.dll
-D:\Projects\GitHub\ai\AI.V2\AI.Class_Library\bin\Debug\AI.Class_Library.pdb
-D:\Projects\GitHub\ai\AI.V2\AI.Class_Library\obj\Debug\AI.Class_Library.csprojAssemblyReference.cache
-D:\Projects\GitHub\ai\AI.V2\AI.Class_Library\obj\Debug\AI.Class_Library.csproj.CoreCompileInputs.cache
-D:\Projects\GitHub\ai\AI.V2\AI.Class_Library\obj\Debug\AI.Class_Library.dll
-D:\Projects\GitHub\ai\AI.V2\AI.Class_Library\obj\Debug\AI.Class_Library.pdb
