@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AI.Class_Library
 {
     public class Bot
     {
-        public string BotName { get; set; }
+        public string Name { get; set; }
 
         public string[] BotRelationships = new string[]
         {
@@ -19,5 +17,14 @@ namespace AI.Class_Library
             "Associates",
             "Enemies"
         };
+    }
+
+    public class User
+    {
+        public string Name { get; set; }
+        public string Relationship { get; set; }
+        public string Gender { get; set; }
+        public bool VIPStatus { get; set; }
+        public virtual Bot Bot { get; set; }
     }
 }

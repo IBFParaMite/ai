@@ -8,20 +8,12 @@ namespace AI.Class_Library
 {
     public class Bot_Functions
     {
-        private Random random;
+        private readonly Random random;
 
         public Bot_Functions()
         {
             random = new Random();
         }
-
-        public string[] VIPUsers = new string[]
-        {
-            "Cameron",
-            "Ancient",
-            "Aleyna",
-            "Jonas"
-        };
 
         public string[] VIPBotNames = new string[]
         {
@@ -53,27 +45,22 @@ namespace AI.Class_Library
             "Gerard"
         };
 
-        public bool CheckVIPStatus(string name)
+        public Bot AssignBot(Bot bot, bool VIPStatus)
         {
-            bool status = VIPUsers.Contains(name) ? true : false;
+            if (VIPStatus)
+            {
+                int responseCount = random.Next(VIPBotNames.Length);
+                bot.Name = VIPBotNames[responseCount];
 
-            return status;
-        }
+                return bot;
+            }
+            else
+            {
+                int responseCount = random.Next(NormalBotNames.Length);
+                bot.Name = NormalBotNames[responseCount];
 
-        public Bot AssignVIPBot(Bot bot)
-        {
-            int responseCount = random.Next(VIPBotNames.Length);
-            bot.BotName = VIPBotNames[responseCount];
-
-            return bot;
-        }
-
-        public Bot AssignNormalBot(Bot bot)
-        {
-            int responseCount = random.Next(NormalBotNames.Length);
-            bot.BotName = NormalBotNames[responseCount];
-
-            return bot;
+                return bot;
+            }
         }
 
         public void Chat(User user)

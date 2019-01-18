@@ -5,32 +5,36 @@ namespace AI.Core
 {
     class Program
     {
+        private Bot bot;
+        private User user;
+        private Bot_Functions functions; 
+
+        public Program()
+        {
+            bot = new Bot();
+            
+            functions = new Bot_Functions();
+        }
+
+        public void BotInitialize()
+        {
+            Console.WriteLine("Hello there! \nWhat is your name?");
+            user = new User
+            {
+                Name = Console.ReadLine(),
+                Bot = functions.AssignBot(bot, user.VIPStatus)
+            };
+
+            functions.Chat(user);
+        }
+
         static void Main(string[] args)
         {
             Console.Title = "AI.V2";
-            User user = new User();
-            Bot bot = new Bot();
-            Bot_Functions functions = new Bot_Functions();
+            Program program = new Program();
 
-            Console.WriteLine("Hello there! \nWhat is your name?");
-
-            user.Name = Console.ReadLine();
-
-            if (functions.CheckVIPStatus(user.Name))
-            {
-                Console.WriteLine("{0} is in the VIP list", user.Name);
-                functions.AssignVIPBot(bot);
-            }
-            else
-            {
-                Console.WriteLine("{0} is not in the VIP list", user.Name);
-                functions.AssignNormalBot(bot);
-            }
-
-            Console.WriteLine(bot.BotName);
-
-            functions.Chat(user);
-
+            program.BotInitialize();
+            
             Console.ReadLine();
         }
     }
