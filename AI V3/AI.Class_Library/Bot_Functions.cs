@@ -47,20 +47,16 @@ namespace AI.Class_Library
 
         public Bot AssignBot(Bot bot, bool VIPStatus)
         {
+            int responseCount;
+
             if (VIPStatus)
-            {
-                int responseCount = random.Next(VIPBotNames.Length);
-                bot.Name = VIPBotNames[responseCount];
-
-                return bot;
-            }
+                responseCount = random.Next(VIPBotNames.Length);
             else
-            {
-                int responseCount = random.Next(NormalBotNames.Length);
-                bot.Name = NormalBotNames[responseCount];
+                responseCount = random.Next(NormalBotNames.Length);
 
-                return bot;
-            }
+            bot.Name = NormalBotNames[responseCount];
+            return bot;
+
         }
 
         public void Chat(User user)
