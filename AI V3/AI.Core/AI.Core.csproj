@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AI.Class_Library\AI.Class_Library.csproj" />
+    <ProjectReference Include="..\AI.Function\AI.Functions.csproj" />
   </ItemGroup>
 
 </Project>

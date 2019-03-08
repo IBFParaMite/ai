@@ -1,41 +1,45 @@
 ﻿using System;
-using AI.Class_Library;
+using System.Threading.Tasks;
+using AI.Data;
+using AI.Functions;
 
 namespace AI.Core
 {
-    class Program
+    public class Program
     {
-        private Bot bot;
         private User user;
-        private Bot_Functions functions; 
+        private readonly BotFunctions functions;
+        private readonly GenericFunctions generic;
 
         public Program()
         {
-            bot = new Bot();
-            
-            functions = new Bot_Functions();
+            user = new User();
+            functions = new BotFunctions();
+            generic = new GenericFunctions();
         }
 
-        public void BotInitialize()
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello there! \nWhat is your name?");
-            user = new User
-            {
-                Name = Console.ReadLine(),
-                Bot = functions.AssignBot(bot, user.VIPStatus)
-            };
-
-            functions.Chat(user);
-        }
-
-        static void Main(string[] args)
-        {
-            Console.Title = "AI.V2";
+            Console.Title = "AI.V5";
             Program program = new Program();
 
-            program.BotInitialize();
-            
+            program.MainAsync().Wait();
+
             Console.ReadLine();
+        }
+
+        public async Task MainAsync()
+        {
+            Console.WriteLine("Hello there!".Botify(user, firstLine: true));
+            Console.WriteLine("What is your name?".Botify(user));
+
+            user.Name = generic.UserInput(user);
+            user.CheckVIP();
+            user.AssignBot();
+
+            Console.WriteLine($"You are {user.Bot.BotRelationship} to me".Botify(user));
+
+            await functions.Chat(user);
         }
     }
 }
